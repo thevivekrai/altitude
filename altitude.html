@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALTITUDE — Rooftop Restaurant & Bar, Dibrugarh</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c0f;
+  --bg2: #0d1218;
+  --bg3: #111820;
+  --gold: #e8a44a;
+  --gold2: #f5c26b;
+  --text: #f0ece4;
+  --muted: #8a8a8a;
+  --border: rgba(232,164,74,0.15);
+  --card: rgba(255,255,255,0.03);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(8,12,15,0.95);
+  backdrop-filter: blur(20px);
+  padding: 14px 60px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  color: rgba(240,236,228,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  padding: 10px 28px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse at 70% 50%, rgba(232,164,74,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(232,164,74,0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #080c0f 0%, #0d1520 50%, #080c0f 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(232,164,74,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,164,74,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 60px;
+  max-width: 700px;
+  animation: heroIn 1.2s ease forwards;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(232,164,74,0.1);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+.hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(64px, 8vw, 110px);
+  font-weight: 300;
+  line-height: 0.95;
+  margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  margin-top: 16px;
+}
+.hero-desc {
+  font-size: 16px;
+  color: rgba(240,236,228,0.65);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 44px;
+}
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--gold);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-outline {
+  padding: 16px 40px;
+  border: 1px solid rgba(240,236,228,0.3);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats {
+  position: absolute;
+  right: 60px;
+  bottom: 80px;
+  display: flex;
+  gap: 48px;
+  z-index: 2;
+  animation: heroIn 1.4s ease forwards;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  z-index: 2;
+}
+.scroll-line { width: 40px; height: 1px; background: var(--gold); }
+
+/* FEATURES */
+.features {
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.feature-item {
+  background: var(--bg);
+  padding: 52px 48px;
+  transition: background 0.3s;
+}
+.feature-item:hover { background: var(--bg2); }
+.feature-icon {
+  width: 52px; height: 52px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+.feature-item h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.feature-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ABOUT */
+.about {
+  padding: 120px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.about h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.about h2 em { font-style: italic; color: var(--gold); }
+.about p {
+  font-size: 15px;
+  color: rgba(240,236,228,0.65);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.about-divider {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin: 32px 0;
+}
+.about-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: gap 0.3s;
+}
+.about-cta:hover { gap: 20px; }
+.about-visual {
+  position: relative;
+}
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #1a2535 0%, #0d1520 100%);
+  position: relative;
+  overflow: hidden;
+}
+.about-img-main::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 60%, rgba(232,164,74,0.15) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8a44a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.about-rooftop-visual {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.rooftop-svg {
+  width: 280px;
+  opacity: 0.4;
+}
+.about-float {
+  position: absolute;
+  bottom: -20px;
+  left: -30px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 24px 32px;
+  backdrop-filter: blur(10px);
+}
+.float-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1;
+}
+.float-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+/* MENU */
+.menu-section {
+  padding: 120px 60px;
+  background: var(--bg2);
+  position: relative;
+}
+.menu-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 300;
+}
+.section-header h2 em { font-style: italic; color: var(--gold); }
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 64px;
+  border: 1px solid var(--border);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tab-btn {
+  padding: 14px 36px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active, .tab-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.menu-items { display: flex; flex-direction: column; gap: 0; }
+.menu-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  transition: all 0.3s;
+  cursor: default;
+}
+.menu-item:hover { padding-left: 12px; }
+.menu-item:hover .item-name { color: var(--gold); }
+.menu-item-left { flex: 1; }
+.item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.item-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  font-weight: 700;
+}
+.tag-recommended { background: var(--gold); color: var(--bg); }
+.tag-seasonal { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+.tag-new { background: #2d6a4f; color: #b7e4c7; }
+.item-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.item-dots {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--muted) 0, var(--muted) 4px, transparent 4px, transparent 10px);
+  opacity: 0.3;
+  margin-top: 14px;
+  min-width: 40px;
+}
+.item-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-top: 4px;
+}
+.menu-visual {
+  position: sticky;
+  top: 100px;
+}
+.menu-img-box {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #1a2535 0%, #0d1520 100%);
+  position: relative;
+  overflow: hidden;
+}
+.menu-img-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse at 40% 70%, rgba(232,164,74,0.12) 0%, transparent 60%);
+}
+.chef-illustration {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 0;
+}
+
+/* REVIEWS */
+.reviews {
+  padding: 120px 60px;
+  position: relative;
+}
+.rating-hero {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.rating-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.rating-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.stars { color: var(--gold); font-size: 24px; letter-spacing: 4px; margin-bottom: 8px; }
+.rating-count { font-size: 13px; color: var(--muted); letter-spacing: 1px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 36px;
+  transition: all 0.3s;
+  position: relative;
+}
+.review-card::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  color: var(--gold);
+  opacity: 0.2;
+  position: absolute;
+  top: 10px;
+  left: 28px;
+  line-height: 1;
+}
+.review-card:hover {
+  border-color: rgba(232,164,74,0.4);
+  transform: translateY(-4px);
+  background: rgba(232,164,74,0.04);
+}
+.review-stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px;
+  color: rgba(240,236,228,0.75);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+}
+.reviewer {
+  display: flex; align-items: center; gap: 12px;
+}
+.reviewer-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #c4873a 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bg);
+  font-family: 'Cormorant Garamond', serif;
+}
+.reviewer-name { font-size: 14px; font-weight: 600; }
+.reviewer-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* LOCATION */
+.location-section {
+  padding: 120px 60px;
+  background: var(--bg2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+.location-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.location-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 4vw, 58px);
+  font-weight: 300;
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+.location-info h2 em { font-style: italic; color: var(--gold); }
+.info-row {
+  display: flex; gap: 20px;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.info-row:last-of-type { border-bottom: none; }
+.info-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.info-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.info-value { font-size: 15px; color: var(--text); line-height: 1.6; }
+.map-container {
+  border: 1px solid var(--border);
+  overflow: hidden;
+  height: 400px;
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.8) invert(0.9) hue-rotate(180deg);
+  opacity: 0.85;
+}
+
+/* CTA BANNER */
+.cta-banner {
+  padding: 120px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: 'ALTITUDE';
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 280px;
+  font-weight: 700;
+  color: rgba(232,164,74,0.04);
+  letter-spacing: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.cta-banner .section-label { margin-bottom: 20px; }
+.cta-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.cta-banner h2 em { font-style: italic; color: var(--gold); }
+.cta-banner p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+
+/* FOOTER */
+footer {
+  padding: 60px 60px 40px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+.footer-brand .nav-logo { font-size: 32px; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 280px; }
+.footer-col h4 {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(--text); }
+.footer-bottom {
+  padding: 24px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p { font-size: 12px; color: var(--muted); }
+.social-links { display: flex; gap: 16px; }
+.social-link {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+/* SCROLL ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* MENU TABS JS */
+.menu-panel { display: none; }
+.menu-panel.active { display: flex; flex-direction: column; gap: 0; }
+
+@media (max-width: 1024px) {
+  nav { padding: 20px 30px; }
+  nav.scrolled { padding: 14px 30px; }
+  .hero-content { padding: 0 30px; }
+  .hero-stats { right: 30px; }
+  .features { grid-template-columns: 1fr; padding: 60px 30px; }
+  .about { grid-template-columns: 1fr; padding: 80px 30px; gap: 60px; }
+  .menu-section { padding: 80px 30px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-visual { display: none; }
+  .reviews { padding: 80px 30px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .rating-hero { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .location-section { grid-template-columns: 1fr; padding: 80px 30px; }
+  .cta-banner { padding: 80px 30px; }
+  footer { grid-template-columns: 1fr 1fr; padding: 60px 30px 40px; gap: 40px; }
+  .footer-bottom { padding: 24px 30px; flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">ALTITUDE</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <a href="#reserve" class="nav-cta">Reserve</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Now Open · Closes 11:30 PM</div>
+    <h1>Dine<em>Above</em></h1>
+    <p class="hero-sub">Rooftop Restaurant & Bar · Dibrugarh</p>
+    <p class="hero-desc">Experience fine dining elevated to new heights. An open-air rooftop sanctuary where exquisite cuisine meets the Dibrugarh skyline.</p>
+    <div class="hero-btns">
+      <a href="#reserve" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-outline">Explore Menu</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">4.7</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.8K</div>
+      <div class="stat-label">Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Years Open</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to Explore
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature-item fade-up">
+    <div class="feature-icon">🍽</div>
+    <h3>All You Can Eat</h3>
+    <p>Indulge in an unlimited spread of our finest dishes — curated for those who believe great food should know no limits.</p>
+  </div>
+  <div class="feature-item fade-up" style="transition-delay:0.15s">
+    <div class="feature-icon">🌿</div>
+    <h3>Outdoor Rooftop</h3>
+    <p>Dine under the open sky on our exclusive rooftop terrace, complete with ambient string lights and panoramic city views.</p>
+  </div>
+  <div class="feature-item fade-up" style="transition-delay:0.3s">
+    <div class="feature-icon">📋</div>
+    <h3>Reservations Required</h3>
+    <p>Secure your table in advance for a seamless dining experience. Walk-ins subject to availability.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text fade-up">
+    <div class="about-label">Our Story</div>
+    <h2>Where the <em>Sky</em> Meets the Table</h2>
+    <p>Perched atop Chowkidingee in the heart of Dibrugarh, ALTITUDE is more than a restaurant — it's an experience. We believe the finest meals are those shared under the open sky, with food that tells a story.</p>
+    <p>Our chefs craft every dish with seasonal ingredients and a passion for bold, authentic flavours that resonate with the spirit of Northeast India and beyond.</p>
+    <div class="about-divider"></div>
+    <a href="#menu" class="about-cta">Explore Our Menu →</a>
+  </div>
+  <div class="about-visual fade-up" style="transition-delay:0.2s">
+    <div class="about-img-main">
+      <div class="about-rooftop-visual">
+        <svg class="rooftop-svg" viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Table -->
+          <rect x="80" y="200" width="120" height="6" rx="3" fill="#e8a44a" opacity="0.6"/>
+          <rect x="100" y="206" width="8" height="60" rx="2" fill="#e8a44a" opacity="0.4"/>
+          <rect x="172" y="206" width="8" height="60" rx="2" fill="#e8a44a" opacity="0.4"/>
+          <!-- Candle -->
+          <rect x="136" y="175" width="8" height="28" rx="2" fill="#f5c26b" opacity="0.8"/>
+          <ellipse cx="140" cy="172" rx="5" ry="8" fill="#f5c26b" opacity="0.9"/>
+          <!-- Wine glasses -->
+          <ellipse cx="115" cy="198" rx="10" ry="4" fill="#e8a44a" opacity="0.3"/>
+          <path d="M110 198 Q108 175 115 168 Q122 175 120 198" stroke="#e8a44a" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <rect x="113" y="168" width="4" height="12" fill="#e8a44a" opacity="0.3"/>
+          <ellipse cx="165" cy="198" rx="10" ry="4" fill="#e8a44a" opacity="0.3"/>
+          <path d="M160 198 Q158 175 165 168 Q172 175 170 198" stroke="#e8a44a" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <rect x="163" y="168" width="4" height="12" fill="#e8a44a" opacity="0.3"/>
+          <!-- String lights -->
+          <path d="M20 80 Q50 70 80 80 Q110 90 140 80 Q170 70 200 80 Q230 90 260 80" stroke="#f5c26b" stroke-width="1" fill="none" opacity="0.6"/>
+          <circle cx="50" cy="78" r="3" fill="#f5c26b" opacity="0.9"/>
+          <circle cx="90" cy="82" r="3" fill="#f5c26b" opacity="0.9"/>
+          <circle cx="140" cy="78" r="3" fill="#f5c26b" opacity="0.9"/>
+          <circle cx="190" cy="82" r="3" fill="#f5c26b" opacity="0.9"/>
+          <circle cx="235" cy="78" r="3" fill="#f5c26b" opacity="0.9"/>
+          <path d="M40 100 Q70 90 100 100 Q130 110 160 100 Q190 90 220 100" stroke="#f5c26b" stroke-width="1" fill="none" opacity="0.4"/>
+          <circle cx="70" cy="98" r="2.5" fill="#f5c26b" opacity="0.8"/>
+          <circle cx="130" cy="102" r="2.5" fill="#f5c26b" opacity="0.8"/>
+          <circle cx="195" cy="98" r="2.5" fill="#f5c26b" opacity="0.8"/>
+          <!-- Stars -->
+          <circle cx="40" cy="30" r="1.5" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="80" cy="20" r="1" fill="#f5c26b" opacity="0.5"/>
+          <circle cx="150" cy="35" r="1.5" fill="#f5c26b" opacity="0.6"/>
+          <circle cx="200" cy="15" r="1" fill="#f5c26b" opacity="0.5"/>
+          <circle cx="240" cy="40" r="1.5" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="60" cy="50" r="1" fill="#f5c26b" opacity="0.4"/>
+          <circle cx="170" cy="55" r="1" fill="#f5c26b" opacity="0.5"/>
+          <!-- City skyline silhouette -->
+          <rect x="10" y="270" width="20" height="50" fill="#e8a44a" opacity="0.1"/>
+          <rect x="20" y="260" width="12" height="60" fill="#e8a44a" opacity="0.1"/>
+          <rect x="220" y="265" width="25" height="55" fill="#e8a44a" opacity="0.1"/>
+          <rect x="235" y="255" width="15" height="65" fill="#e8a44a" opacity="0.1"/>
+          <rect x="248" y="275" width="20" height="45" fill="#e8a44a" opacity="0.1"/>
+        </svg>
+      </div>
+    </div>
+    <div class="about-float">
+      <div class="float-num">4.7★</div>
+      <div class="float-text">Google Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-header fade-up">
+    <div class="section-label">Curated for You</div>
+    <h2>Our Special <em>Menu</em></h2>
+  </div>
+  <div class="menu-tabs fade-up">
+    <button class="tab-btn active" data-tab="starters">Starters</button>
+    <button class="tab-btn" data-tab="mains">Mains</button>
+    <button class="tab-btn" data-tab="grills">Grills</button>
+    <button class="tab-btn" data-tab="drinks">Drinks</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-items-container">
+
+      <!-- STARTERS -->
+      <div class="menu-panel active" id="tab-starters">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Rooftop Bruschetta <span class="item-tag tag-recommended">Recommended</span></div>
+            <div class="item-desc">Toasted sourdough, fresh tomato, garlic, basil oil drizzle</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹280</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Crispy Calamari</div>
+            <div class="item-desc">Lightly battered, served with lemon aioli and chili jam</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹340</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Altitude Nachos <span class="item-tag tag-new">New</span></div>
+            <div class="item-desc">House-made tortilla chips, jalapeño, cheese sauce, sour cream</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹320</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Mushroom Crostini</div>
+            <div class="item-desc">Wild mushroom sauté, parmesan shavings, truffle oil</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹295</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Chicken Satay <span class="item-tag tag-seasonal">Seasonal</span></div>
+            <div class="item-desc">Marinated skewers with peanut dipping sauce</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹360</div>
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div class="menu-panel" id="tab-mains">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Pan Seared Salmon <span class="item-tag tag-recommended">Recommended</span></div>
+            <div class="item-desc">Herb butter, asparagus, lemon caper sauce</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹680</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Summertime Pesto Pasta</div>
+            <div class="item-desc">Fresh basil pesto, cherry tomatoes, parmesan, pine nuts</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹420</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Crispy Skin Chicken</div>
+            <div class="item-desc">Ricotta, radicchio, prosciutto salad, cabernet reduction</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹520</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Wild Mushroom Risotto <span class="item-tag tag-new">New</span></div>
+            <div class="item-desc">Arborio rice, forest mushrooms, white wine, parmesan</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹450</div>
+        </div>
+      </div>
+
+      <!-- GRILLS -->
+      <div class="menu-panel" id="tab-grills">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Signature BBQ Ribs <span class="item-tag tag-recommended">Recommended</span></div>
+            <div class="item-desc">Slow-cooked pork ribs, smoky BBQ glaze, coleslaw</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹780</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Grilled Barramundi</div>
+            <div class="item-desc">Herb-marinated, lemon butter, seasonal greens</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹640</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Lamb Chops <span class="item-tag tag-seasonal">Seasonal</span></div>
+            <div class="item-desc">Rosemary crust, mint jelly, garlic mashed potato</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹860</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Chicken Platter</div>
+            <div class="item-desc">Half grilled chicken, chimichurri, grilled corn</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹560</div>
+        </div>
+      </div>
+
+      <!-- DRINKS -->
+      <div class="menu-panel" id="tab-drinks">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Skyline Sangria <span class="item-tag tag-recommended">Recommended</span></div>
+            <div class="item-desc">Red wine, brandy, orange juice, seasonal fruits</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹380</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Mango Mojito</div>
+            <div class="item-desc">Fresh mango, mint, lime, soda — mocktail available</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹220</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Cold Brew Iced Coffee <span class="item-tag tag-new">New</span></div>
+            <div class="item-desc">12-hour steep, oat milk, vanilla syrup</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹180</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <div class="item-name">Rooftop Lemonade</div>
+            <div class="item-desc">Fresh-pressed lemon, sea salt, mint, sparkling water</div>
+          </div>
+          <div class="item-dots"></div>
+          <div class="item-price">₹150</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISUAL SIDE -->
+    <div class="menu-visual fade-up">
+      <div class="menu-img-box">
+        <svg viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <!-- Background atmosphere -->
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="70%" r="50%">
+              <stop offset="0%" stop-color="#e8a44a" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#0d1520" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="520" fill="#0d1520"/>
+          <rect width="400" height="520" fill="url(#glow)"/>
+          <!-- Restaurant background -->
+          <rect x="0" y="300" width="400" height="220" fill="#111820" opacity="0.8"/>
+          <!-- Hanging lights -->
+          <line x1="50" y1="0" x2="50" y2="280" stroke="#f5c26b" stroke-width="1" opacity="0.4"/>
+          <line x1="130" y1="0" x2="130" y2="260" stroke="#f5c26b" stroke-width="1" opacity="0.4"/>
+          <line x1="200" y1="0" x2="200" y2="290" stroke="#f5c26b" stroke-width="1" opacity="0.4"/>
+          <line x1="270" y1="0" x2="270" y2="270" stroke="#f5c26b" stroke-width="1" opacity="0.4"/>
+          <line x1="350" y1="0" x2="350" y2="285" stroke="#f5c26b" stroke-width="1" opacity="0.4"/>
+          <circle cx="50" cy="280" r="8" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="130" cy="260" r="8" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="200" cy="290" r="8" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="270" cy="270" r="8" fill="#f5c26b" opacity="0.7"/>
+          <circle cx="350" cy="285" r="8" fill="#f5c26b" opacity="0.7"/>
+          <!-- Glow around lights -->
+          <circle cx="50" cy="280" r="20" fill="#f5c26b" opacity="0.08"/>
+          <circle cx="200" cy="290" r="20" fill="#f5c26b" opacity="0.08"/>
+          <circle cx="350" cy="285" r="20" fill="#f5c26b" opacity="0.08"/>
+          <!-- Chef figure silhouette -->
+          <ellipse cx="200" cy="380" rx="45" ry="50" fill="#1a2535" opacity="0.9"/>
+          <circle cx="200" cy="300" r="32" fill="#1a2535" opacity="0.9"/>
+          <!-- Chef hat -->
+          <ellipse cx="200" cy="275" rx="28" ry="8" fill="#f0ece4" opacity="0.15"/>
+          <rect x="178" y="248" width="44" height="30" rx="4" fill="#f0ece4" opacity="0.12"/>
+          <!-- Plate -->
+          <ellipse cx="200" cy="430" rx="55" ry="20" fill="#e8a44a" opacity="0.12"/>
+          <ellipse cx="200" cy="430" rx="45" ry="16" fill="#e8a44a" opacity="0.08"/>
+          <!-- Text overlay -->
+          <text x="200" y="490" text-anchor="middle" fill="#e8a44a" opacity="0.5" font-size="11" letter-spacing="4" font-family="serif">ALTITUDE KITCHEN</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="rating-hero fade-up">
+    <div class="rating-big">4.7</div>
+    <div class="rating-info">
+      <h3>Exceptional Dining Experience</h3>
+      <div class="stars">★★★★★</div>
+      <div class="rating-count">Based on 4,771 Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Hands down the best rooftop dining experience in Dibrugarh. The ambiance in the evening is absolutely magical — string lights, open sky, and food that exceeded every expectation.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">R</div>
+        <div>
+          <div class="reviewer-name">Rohan Borkakoti</div>
+          <div class="reviewer-date">March 2025 · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up" style="transition-delay:0.15s">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Celebrated my anniversary here and it was perfect. The staff was incredibly attentive, the all-you-can-eat spread was incredible value, and the rooftop view of the city at night — just wow.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">P</div>
+        <div>
+          <div class="reviewer-name">Priya Hazarika</div>
+          <div class="reviewer-date">February 2025 · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up" style="transition-delay:0.3s">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">ALTITUDE is a rare gem in this part of Assam. Every visit feels special. The BBQ grills and the Skyline Sangria are absolutely unmissable. Reserve in advance — it fills up fast!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">A</div>
+        <div>
+          <div class="reviewer-name">Aditya Sharma</div>
+          <div class="reviewer-date">January 2025 · Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <div class="location-info fade-up">
+    <div class="about-label">Find Us</div>
+    <h2>Visit Us in <em>Dibrugarh</em></h2>
+    <div class="info-row">
+      <div class="info-icon">📍</div>
+      <div>
+        <div class="info-label">Address</div>
+        <div class="info-value">Ttiloi Bari, Chowkidingee<br>Dibrugarh, Assam 786001</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🕐</div>
+      <div>
+        <div class="info-label">Hours</div>
+        <div class="info-value">Open Daily<br>Closes at 11:30 PM</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📋</div>
+      <div>
+        <div class="info-label">Reservations</div>
+        <div class="info-value">Required for all bookings<br>Walk-ins subject to availability</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🚗</div>
+      <div>
+        <div class="info-label">From City Centre</div>
+        <div class="info-value">Approx. 24 minutes by car</div>
+      </div>
+    </div>
+  </div>
+  <div class="map-container fade-up" style="transition-delay:0.2s">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.0!2d94.9120!3d27.4728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3742e879b5caaaab%3A0xca2ed81e3a8e9c32!2sAltitude%20Restaurant!5e0!3m2!1sen!2sin!4v1"
+      allowfullscreen loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- CTA RESERVE -->
+<section class="cta-banner" id="reserve">
+  <div class="section-label">Make a Reservation</div>
+  <h2>Ready to Dine<br><em>at Altitude?</em></h2>
+  <p>Reserve your table now and step into an evening you won't forget. Reservations are required — don't miss your spot under the stars.</p>
+  <div class="cta-btns">
+    <a href="tel:+91" class="btn-primary">Call to Reserve</a>
+    <a href="https://maps.google.com/?q=Altitude+Restaurant+Dibrugarh" target="_blank" class="btn-outline">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <span class="nav-logo">ALTITUDE</span>
+    <p>An elevated dining experience in the heart of Dibrugarh. Rooftop views, curated menus, and moments worth remembering.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Navigate</h4>
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#menu">Our Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Dining</h4>
+    <ul>
+      <li><a href="#">All You Can Eat</a></li>
+      <li><a href="#">Rooftop Seating</a></li>
+      <li><a href="#">Private Events</a></li>
+      <li><a href="#">Gift Cards</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="#">Chowkidingee, Dibrugarh</a></li>
+      <li><a href="#">Assam 786001</a></li>
+      <li><a href="#">Open till 11:30 PM</a></li>
+      <li><a href="#">4.7 ★ on Google</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 ALTITUDE Restaurant. All rights reserved. Dibrugarh, Assam.</p>
+  <div class="social-links">
+    <a href="#" class="social-link">f</a>
+    <a href="#" class="social-link">ig</a>
+    <a href="#" class="social-link">g</a>
+  </div>
+</div>
+
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Menu tabs
+const tabBtns = document.querySelectorAll('.tab-btn');
+const menuPanels = document.querySelectorAll('.menu-panel');
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    menuPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
